@@ -18,5 +18,5 @@
         </div>
     </div>
     <hr>
-    <p align="center">Project Absen 2021/2022</p>
+    <p align="center">Project Absen &copy; 2021/2022 </p>
 </div>

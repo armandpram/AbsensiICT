@@ -8,7 +8,7 @@
     <?php include "dashboard.php"; ?>
 
     <!-- isinya -->
-    <div class="container-fluid" style="padding-top: 10%; text-align:center">
+    <div class="container-fluid" style="padding-top: 6%; text-align:center">
         <img src="img/time1.jpg" alt="" srcset="" width="30%">
         <h1>SELAMAT DATANG <br>
         DI LABORATORIUM ICT UNIVERSITAS UI LUHUR
