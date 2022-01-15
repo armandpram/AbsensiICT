@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Data Asisten</title>
     <?php include "header.php"; ?>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
     <?php include "dashboard.php"; ?>
     <div class="container">
-    <h1 align="center">Data Asisten</h1>
-    <hr class="hr-besar">
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span> Tambah Asisten</button><br><br>
+        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal"><span
+                style="font-size: 13px; font-weight: bold;" class="glyphicon glyphicon-plus"></span> Tambah
+            Asisten</button><br><br>
+
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
@@ -23,69 +29,57 @@
                     <th>Jabatan</th>
                 </tr>
             </thead>
+            <!-- Koneksi Data Asisten -->
             <?php
+            include "koneksi.php";
             $no = 1;
             $sql = mysqli_query($conn, "SELECT * FROM asisten");
             while($data = mysqli_fetch_array($sql)){
             ?>
-                <tr>
-                    <td><?php echo $no++; ?></td>
-                    <td><?php echo $data['noKartu']; ?></td>
-                    <td><?php echo $data['nim']; ?></td>
-                    <td><?php echo $data['nama']; ?></td>
-                    <td><?php echo $data['jabatan']; ?></td>
-                </tr>
+            <tr>
+                <td><?php echo $no++; ?></td>
+                <td><?php echo $data['noKartu']; ?></td>
+                <td><?php echo $data['nim']; ?></td>
+                <td><?php echo $data['nama']; ?></td>
+                <td><?php echo $data['jabatan']; ?></td>
+            </tr>
             <?php
             }
             ?>
         </table>
     </div>
-    <!-- Modal -->
+    <!-- Modal Tambah-->
     <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
+
+            <!-- Isinya Modal-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Tambah Asisten</h4>
+                    <h4 class="modal-title">Tambah Data Asisten</h4>
                 </div>
-                <form action="" method="post">
-                <div class="modal-body">
+                <form class="form-horizontal" action="" method="post">
                     <div class="form-group">
-                        <input class="form-control" type="number" name="nim" placeholder="Nomor Induk Mahasiswa">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="number" name="nomorkartu" placeholder="Nomor Kartu">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="nama" placeholder="Nama Asisten">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="jabatan" placeholder="Jabatan">
-                    </div>
+                        <label class="control-label col-xs-3">NIM</label>
+                        <div class="col-xs-9">
+                            <input name="nabar" class="form-control" type="text" placeholder="Masukin NIM lu cuk..." style="width:335px;" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-xs-3">Nama Asisten</label>
+                            <div class="col-xs-9">
+                                <input name="nabar" class="form-control" type="text" placeholder="Masukin nama lu cuk..." style="width:335px;" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                    <button class="btn btn-info">Simpan</button>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" name="tambah" class="btn btn-success">Tambah</button></form>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+                    </div>
+                </form>
+
             </div>
         </div>
-    </div>
-    <!-- End Modal -->
-    <?php include "footer.php" ?>
 </body>
-</html>
 
-<?php
-    if(isset($_POST['tambah'])){
-        $nim = $_POST['nim'];
-        $noKartu = $_POST['nomorkartu'];
-        $nama = $_POST['nama'];
-        $jabatan = $_POST['jabatan'];
-        $sql1 = mysqli_query($conn, "INSERT INTO asisten VALUES('$nim','$noKartu','$nama','$jabatan')");
-        if($sql1){
-            echo "<script>alert('Berhasil Tambah Asisten!'); location.replace('asisten.php');</script>";
-        } else {
-            echo "<script>alert('Ada Kesalahan!'); location.replace('asisten.php');</script>";
-        }
-    }
-?>
+</html>
