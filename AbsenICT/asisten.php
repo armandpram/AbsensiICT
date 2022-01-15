@@ -10,7 +10,9 @@
 <body>
     <?php include "dashboard.php"; ?>
     <div class="container">
-    <button type="button" class="btn btn-primary"><span style="font-size: 20px; font-weight: bold;" class="glyphicon glyphicon-plus"></span> Tambah Asisten</button><br><br>
+    <h1 align="center">Data Asisten</h1>
+    <hr class="hr-besar">
+    <button type="button" onclick="location.href='index.php';" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Tambah Asisten</button><br><br>
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>

@@ -2,3 +2,11 @@ table thead tr th {
     background-color: grey;
     color: white;
 }
+.hr-besar{
+    height: 1px;
+    background-color: black;
+}
+.glyphicon {
+    font-size: 20px;
+    font-weight: bold;
+}
